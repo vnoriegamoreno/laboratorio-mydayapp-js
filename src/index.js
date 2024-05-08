@@ -1,5 +1,16 @@
 import "./css/base.css";
+import { mainEl, footerEl, taskEl } from "./js/dom-elements";
 
-import { sayHello } from "./js/utils";
+const todoHasElements = () => {
+  if (!taskEl.hasElements()) {
+    mainEl.hide();
+    footerEl.hide();
+  } else {
+    mainEl.show();
+    footerEl.show();
+  }
+};
 
-console.log(sayHello("Hello"));
+(function () {
+  todoHasElements();
+})();
