@@ -39,6 +39,11 @@ DOM.controllers.todoListEl.getElement().addEventListener("keydown", (e) => {
   updateAndReloadApp();
 });
 
+DOM.controllers.completedBtnEl.getElement().addEventListener("click", () => {
+  DOM.controllers.completedBtnEl.clearCompleted();
+  updateAndReloadApp();
+});
+
 (function main() {
   updateAndReloadApp();
 })();

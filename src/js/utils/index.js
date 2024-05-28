@@ -4,6 +4,7 @@ import {
   taskElementController,
   newTodoInputElementController,
   todoElementController,
+  completedBtnElementController,
 } from "./dom-manipulation";
 import { existTasksInTodoList, refreshItemsLength } from "./utils";
 
@@ -14,6 +15,7 @@ export const DOM = {
     taskItemEl: taskElementController,
     newTodoInputEl: newTodoInputElementController,
     todoListEl: todoElementController,
+    completedBtnEl: completedBtnElementController,
   },
 };
 

@@ -35,6 +35,14 @@ export const taskElementController = {
   hasElements() {
     return todoElementController.getElement().querySelectorAll("li").length;
   },
+  getAllElements() {
+    const allEls = [];
+    todoElementController
+      .getElement()
+      .querySelectorAll("li")
+      .forEach((el) => allEls.push(el));
+    return allEls;
+  },
   getPendingElements() {
     const pendingEls = [];
     todoElementController
@@ -50,6 +58,18 @@ export const taskElementController = {
       });
     return pendingEls;
   },
+  getCompletedElements() {
+    const completedEls = [];
+    todoElementController
+      .getElement()
+      .querySelectorAll("li")
+      .forEach((el) => {
+        if (el.getAttribute("class") === "completed") {
+          completedEls.push(el);
+        }
+      });
+    return completedEls;
+  },
 };
 
 export const newTodoInputElementController = {
@@ -61,5 +81,19 @@ export const newTodoInputElementController = {
   },
   setValue(value) {
     this.getElement().value = value;
+  },
+};
+
+export const completedBtnElementController = {
+  getElement() {
+    return document.querySelector(".clear-completed");
+  },
+  clearCompleted() {
+    const todoEl = todoElementController.getElement();
+    const pendingEls = taskElementController.getPendingElements();
+    todoEl.innerHTML = "";
+    if (pendingEls.length) {
+      pendingEls.forEach((task) => todoEl.append(task));
+    }
   },
 };
